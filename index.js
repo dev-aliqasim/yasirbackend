@@ -5,11 +5,12 @@ const patientRoutes = require("./routes/patientRoutes");
 
 const app = express();
 const port = 3000;
+const mongoURI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
 mongoose
   .connect(
-    "mongodb+srv://topreactnativedev:p7uxRyU1B8MNNg8R@cluster0.dqibdix.mongodb.net/",
+    mongoURI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
