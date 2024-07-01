@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors  = require('cors');
+
 const patientRoutes = require("./routes/patientRoutes");
 
 const app = express();
@@ -25,6 +27,14 @@ mongoose
   });
 
 // Middleware
+app.use(cors({
+  origin: '*', // Allow any origin
+  methods: '*', // Allow any HTTP method
+  allowedHeaders: '*', // Allow any header
+  exposedHeaders: '*', // Expose any headers (if needed)
+  credentials: true, // If you need to include cookies in requests
+  optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+}))
 app.use(bodyParser.json());
 
 // Routes
